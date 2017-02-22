@@ -1,7 +1,7 @@
 // our packages
 import app from './app';
-import { logger } from './util/logger';
-import { thinky } from './db';
+import {logger} from './util/logger';
+import {thinky} from './db';
 
 thinky.dbReady().then(() => {
   // start server
@@ -10,8 +10,7 @@ thinky.dbReady().then(() => {
     const port = this.address().port;
     logger.info(`Experts-server is listening at http://${host}:${port}`);
   });
-}).catch((e) => {
-  console.log(e);
+}).catch(() => {
 })
   ;
 

@@ -4,16 +4,22 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
+import morgan from 'morgan';
 
+// our packages
 import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
+import {logger} from './util';
 
 // init app
 const app = express();
 
+// setup logging
+app.use(morgan('combined', {stream: logger.stream}));
+
 // setup body parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // add cookie parsing
 app.use(cookieParser());
@@ -23,7 +29,7 @@ app.use(session({
   secret: authConfig.sessionSecret,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false},
+  cookie: {secure: false},
 }));
 
 // add password.js
@@ -37,11 +43,10 @@ app.get('/', (req, res) => {
 setupAuthRoutes(app);
 
 
-// catch all unhandler errors
-app.use((err, req, res) => {
-  // console.error(err.stack);
+//  catch all unhandled errors
+app.use((err, req, res, next) => {
+  logger.error('unhandled application error: ', err);
   res.status(500).send(err);
 });
-
 // export app
 export default app;

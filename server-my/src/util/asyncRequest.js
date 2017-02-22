@@ -1,6 +1,6 @@
 import {logger} from './logger';
 
 export const asyncRequest = handler =>
-  (res, req) =>
+  (req, res) =>
         handler(req, res).catch(e => logger.error('error during request:', e));
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint ./src",    
-    "test": "babel-node test "
+    "test": "node ./test/index | tap-spec"
   },
   "keywords": [
     "rest",
@@ -29,8 +29,7 @@
       "stage-0"
     ]
   },
-  "devDependencies": {
-    
+  "devDependencies": {    
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
