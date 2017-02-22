@@ -22,6 +22,9 @@ export default (test) => {
       t.ok(actualBody.token, 'Token exists');
       t.equal(actualBody.user.login, 'test', 'Login matches request');
       t.deepEqual(actualBody.user, decodedUser, 'User Match token');
+      // use in the other tests
+      app.set('token', actualBody.token);
+      app.set('user', actualBody.user);
       t.end();
     });
   });

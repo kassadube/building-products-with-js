@@ -5,29 +5,14 @@ import request from 'supertest';
 import app from '../src/app';
 
 export default (test) => {
-  test('Should failed register with password mismatch', (t) => {
+  test('GET /api/user/:id', (t) => {
     request(app)
-      .post('/api/register')
-      .send({login: 'test', password: '123', passwordRepeat: '1234'})
-      .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        const expectedBody = {error: 'Passwords do not match'};
-        const actualBody = res.body;
-
-        t.error(err, 'No Error');
-        t.deepEqual(actualBody, expectedBody, 'Retrieve body');
-        t.end();
-      });
-  });
-  test('Should register with login and password', (t) => {
-    request(app)
-      .post('/api/register')
-      .send({login: 'test', password: '123', passwordRepeat: '123'})
+      .get(`/api/user/${app.get('user').id}`)
+      .set('x-access-token', app.get('token'))
       .expect(200)
       .expect('Content-Type', /json/)
       .end((err, res) => {
-        const expectedBody = {success: true};
+        const expectedBody = app.get('user');
         const actualBody = res.body;
 
         t.error(err, 'No Error');
@@ -35,20 +20,34 @@ export default (test) => {
         t.end();
       });
   });
-  test('Should failed register with same login', (t) => {
+  test('GET /api/user/me', (t) => {
     request(app)
-      .post('/api/register')
-      .send({login: 'test', password: '123', passwordRepeat: '123'})
-      .expect(403)
+      .get('/api/user/me')
+      .set('x-access-token', app.get('token'))
+      .expect(200)
       .expect('Content-Type', /json/)
       .end((err, res) => {
-        const expectedBody = {error: 'User already exists'};
+        const expectedBody = app.get('user');
         const actualBody = res.body;
 
         t.error(err, 'No Error');
         t.deepEqual(actualBody, expectedBody, 'Retrieve body');
+        t.end();
+      });
+  });
+  test('GET /api/user/:id non exist id', (t) => {
+    request(app)
+      .get('/api/user/1234')
+      .set('x-access-token', app.get('token'))
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = {error: 'User does not exist'};
+        const actualBody = res.body;
+
+        t.error(err, 'No Error');
+        t.deepEqual(actualBody, expectedBody, 'Get the correct error');
         t.end();
       });
   });
 };
-

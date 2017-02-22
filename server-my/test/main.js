@@ -7,6 +7,7 @@ import {db as dbConfig} from '../config';
 import login from './login';
 import register from './register';
 import general from './general';
+import user from './user';
 
 thinky.dbReady().then(() => {
   // clean User table before starting tests
@@ -14,10 +15,11 @@ thinky.dbReady().then(() => {
     await r.db(dbConfig.db).table('User').delete();
     t.end();
   });
- 
- register(test);
+  register(test);
   login(test);
-   general(test);
+  user(test);
+  //general(test);
+  
 // close db connection
   test((t) => {
     setImmediate(() => r.getPoolMaster().drain());
