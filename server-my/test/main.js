@@ -14,9 +14,10 @@ thinky.dbReady().then(() => {
     await r.db(dbConfig.db).table('User').delete();
     t.end();
   });
-  general(test);
-  register(test);
+ 
+ register(test);
   login(test);
+   general(test);
 // close db connection
   test((t) => {
     setImmediate(() => r.getPoolMaster().drain());

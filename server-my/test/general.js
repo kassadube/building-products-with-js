@@ -33,5 +33,32 @@ export default (test) => {
         t.end();
       });
   });
+  test('should fail to sutenticated request', (t) => {
+    request(app)
+    .get('/tauth')
+    .expect(401)
+    .end((err, res) => {
+      const expectedBody = 'Unauthorized';
+      const actualBody = res.text;
+
+      t.error(err, 'No error');
+      t.equal(actualBody, expectedBody, 'Retrieve body');
+      t.end();
+    });
+  });
+  test('should succeed to sutenticated request', (t) => {
+    request(app)
+    .get('/tauth')
+    .set('x-access-token', app.get('token'))
+    .expect(200)
+    .end((err, res) => {
+      const expectedBody = 'auth!';
+      const actualBody = res.text;
+
+      t.error(err, 'No error');
+      t.equal(actualBody, expectedBody, 'Retrieve body');
+      t.end();
+    });
+  });
 };
 

@@ -1,8 +1,10 @@
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
+import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
 
 import {User} from '../db';
 import {hash} from '../util';
+import {auth as authConfig} from '../../config';
 
 passport.serializeUser((user, done) => { done(null, user.id); });
 
@@ -29,3 +31,16 @@ passport.use(new LocalStrategy({usernameField: 'login'}, async (login, password,
   return done(null, user);
 }));
 
+// jwt Strategy
+const jwtOpts = {
+  jwtFromRequest: ExtractJwt.fromHeader('x-access-token'),
+  secretOrKey: authConfig.jwtSecret,
+};
+passport.use(new JwtStrategy(jwtOpts, async(payload, done) => {
+  const user = await User.get(payload.id);
+  if (!user) {
+    return done(null, false);
+  }
+  // return the user if succed
+  return done(null, user);
+}));

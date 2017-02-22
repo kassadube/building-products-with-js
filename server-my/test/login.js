@@ -1,8 +1,10 @@
 // npm packages
 import request from 'supertest';
+import jwt from 'jsonwebtoken';
 
 // our packages
 import app from '../src/app';
+import {auth as authConfig} from '../config';
 
 export default (test) => {
   test('should login success test', (t) => {
@@ -13,10 +15,13 @@ export default (test) => {
     .expect('Content-Type', /json/)
     .end((err, res) => {
       const actualBody = res.body;
-
+      const decodedUser = jwt.decode(actualBody.token, authConfig.jwtSecret);
+      delete decodedUser.iat;
       t.error(err, 'No error');
       t.ok(actualBody.user, 'User exists');
+      t.ok(actualBody.token, 'Token exists');
       t.equal(actualBody.user.login, 'test', 'Login matches request');
+      t.deepEqual(actualBody.user, decodedUser, 'User Match token');
       t.end();
     });
   });

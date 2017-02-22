@@ -39,6 +39,10 @@ app.use(passport.session());
 app.get('/', (req, res) => {
   res.send('Hello world!');
 });
+app.get('/tauth', passport.authenticate('jwt', {session: false}), (req, res) => {
+  res.send('auth!');
+});
+
 
 setupAuthRoutes(app);
 
