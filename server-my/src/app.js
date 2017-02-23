@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
+import setQuestionRoutes from './question';
 import {logger} from './util';
 
 // init app
@@ -47,6 +48,7 @@ app.get('/tauth', passport.authenticate('jwt', {session: false}), (req, res) => 
 
 setupAuthRoutes(app);
 setupUserRoutes(app);
+setQuestionRoutes(app);
 
 //  catch all unhandled errors
 app.use((err, req, res, next) => {

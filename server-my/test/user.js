@@ -50,4 +50,41 @@ export default (test) => {
         t.end();
       });
   });
+  test('POST /api/user/:id - update with same data', (t) => {
+    request(app)
+      .post(`/api/user/${app.get('user').id}`)
+      .set('x-access-token', app.get('token'))
+      .send({login: 'test'})
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = app.get('user');
+        delete expectedBody.password;
+        const actualBody = res.body;
+
+        t.error(err, 'No Error');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve body');
+        t.end();
+      });
+  });
+  test('POST /api/user/:id', (t) => {
+    request(app)
+      .post(`/api/user/${app.get('user').id}`)
+      .set('x-access-token', app.get('token'))
+      .send({login: 'test123'})
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = {
+          ...app.get('user'),
+          login: 'test123',
+        };
+        delete expectedBody.password;
+        const actualBody = res.body;
+
+        t.error(err, 'No Error');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve body');
+        t.end();
+      });
+  });
 };
