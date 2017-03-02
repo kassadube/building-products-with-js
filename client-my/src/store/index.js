@@ -1,7 +1,14 @@
-import {createStore, combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import {routerReducer, routerMiddleware} from 'react-router-redux';
+import {createEpicMiddleware} from 'redux-observable';
+
+import rootReducer from './rootReducer';
+import rootEpics from './rootEpics';
+
+const epicMiddleware = createEpicMiddleware(rootEpics);
 
 const initialState = {world: 'click me!'};
+/*
 const helloWorld = (state = initialState, action) => {
   switch (action.type) {
     case 'HELLO':
@@ -12,7 +19,7 @@ const helloWorld = (state = initialState, action) => {
       return state;
   }
 };
-
+*/
 
 /*
 const helloWorldReducer = (state = initialState, action) => {
@@ -25,11 +32,19 @@ const helloWorldReducer = (state = initialState, action) => {
   }
 };
 */
-export const helloWorldAction = () => ({type: 'HELLO'});
 
-const reducer = combineReducers({helloWorld, routing: routerReducer});
+
+//const reducer = combineReducers(rootReducer);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 /* eslint-disable no-underscore-dangle */
-const store = createStore(reducer,
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer,
+  composeEnhancers(
+    applyMiddleware(
+        epicMiddleware
+      )
+  )
+  );
 
 export default store;

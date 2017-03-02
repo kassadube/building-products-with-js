@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {helloWorldAction} from '../../store';
+import {helloWorldAction} from '../../store/actions';
 
 const Home = ({onClick, world}) => (
   <div className="jumbotron">
