@@ -15,7 +15,7 @@ export default () => (
   <footer style={style.footer}>
     <div className="row">
       <div className="col-xs-11 col-sm-9 col-md-7">
-        this is a footer
+        this is my footer
       </div>
     </div>
   </footer>
