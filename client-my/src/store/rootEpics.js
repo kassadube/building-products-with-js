@@ -3,8 +3,8 @@ import {Observable} from 'rxjs/Observable';
 import {replace} from 'react-router-redux';
 import * as ActionTypes from './actionTypes';
 import 'rxjs';
-import { helloWorld} from './epics';
+import epics from './epics';
 
 
 
-export default combineEpics(helloWorld);
+export default combineEpics(...epics);
