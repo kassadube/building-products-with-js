@@ -2,11 +2,11 @@ import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
 
-import {helloWorld} from './reducers/helloWorld';
+import reducers from './reducers';
 
 
 
 export default combineReducers({
- helloWorld,
+ ...reducers,
  routing: routerReducer,
 });
