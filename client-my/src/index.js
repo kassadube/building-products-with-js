@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // our packages
 import Home from './pages/home';
+import Login from './pages/login';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="home" component={Home} />
+        <Route path="login" component={Login} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
