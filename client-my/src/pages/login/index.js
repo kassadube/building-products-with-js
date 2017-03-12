@@ -1,10 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {push} from 'react-router-redux';
 
 import {loginAction} from '../../store/actions';
 
-const Login = ({onLoginClick}) => {
+
+const mapStateToProps = state => ({
+  token: state.auth.token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  navToHome: () => dispatch(push('/')),
+  onLoginClick: params => dispatch(loginAction(params)),
+});
+
+const Login = ({onLoginClick, token, navToHome}) => {
   let usernameInput;
   let passwordInput;
   let rememberMeInput;
@@ -17,7 +28,9 @@ const Login = ({onLoginClick}) => {
       rememberMe: rememberMeInput.checked,
     });
   };
-
+  if (token) {
+    setImmediate(() => navToHome());
+  }
   return (
     <div className="jumbotron">
       <h3>Login Page</h3>
@@ -45,7 +58,12 @@ const Login = ({onLoginClick}) => {
         </div>
         <div className="checkbox">
           <label htmlFor="rememberMe">
-            <input type="checkbox" id="rememberMe" name="rememberMe" ref={(i) => { rememberMeInput = i; }} /> Check me out
+            <input
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              ref={(i) => { rememberMeInput = i; }}
+            /> Check me out
         </label>
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick} >Submit</button>
@@ -54,14 +72,5 @@ const Login = ({onLoginClick}) => {
   );
 };
 
-
-const mapStateToProps = state => ({
-  token: state.auth.token,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onLoginClick: params => dispatch(loginAction(params)),
-
-});
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
