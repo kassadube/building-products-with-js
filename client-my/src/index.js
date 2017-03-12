@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // our packages
 import Home from './pages/home';
 import Login from './pages/login';
+import Register from './pages/register';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
@@ -25,6 +26,7 @@ ReactDOM.render(
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="home" component={Home} />
         <Route path="login" component={Login} />
+        <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

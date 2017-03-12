@@ -2,26 +2,25 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-import {loginAction} from '../../store/actions';
+import {registerAction} from '../../store/actions';
 
-const Login = ({onLoginClick}) => {
+const Register = ({onRegisterClick}) => {
   let usernameInput;
   let passwordInput;
-  let rememberMeInput;
+  let passwordRepeatInput;
 
   const handleClick = (e) => {
     e.preventDefault();
-    onLoginClick({
+    onRegisterClick({
       login: usernameInput.value,
       password: passwordInput.value,
-      rememberMe: rememberMeInput.checked,
+      passwordRepeat: passwordRepeatInput.value,
     });
   };
-
   return (
     <div className="jumbotron">
       <h3>Login Page</h3>
-      <p>please log in Or <Link to="/register" >register </Link> </p>
+      <p>please Register Or <Link to="/login" >Login </Link></p>
       <form>
         <div className="form-group">
           <label htmlFor="usernameInput">Username</label>
@@ -43,10 +42,15 @@ const Login = ({onLoginClick}) => {
             ref={(i) => { passwordInput = i; }}
           />
         </div>
-        <div className="checkbox">
-          <label htmlFor="rememberMe">
-            <input type="checkbox" id="rememberMe" name="rememberMe" ref={(i) => { rememberMeInput = i; }} /> Check me out
-        </label>
+        <div className="form-group">
+          <label htmlFor="passwordRepeatInput">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="passwordRepeatInput"
+            placeholder="Password repeat"
+            ref={(i) => { passwordRepeatInput = i; }}
+          />
         </div>
         <button type="submit" className="btn btn-default" onClick={handleClick} >Submit</button>
       </form>
@@ -60,8 +64,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoginClick: params => dispatch(loginAction(params)),
+  onRegisterClick: params => dispatch(registerAction(params)),
 
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

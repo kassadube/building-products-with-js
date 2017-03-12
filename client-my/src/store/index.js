@@ -7,7 +7,7 @@ import rootEpics from './rootEpics';
 
 const epicMiddleware = createEpicMiddleware(rootEpics);
 
-const initialState = {world: 'click me!'};
+// const initialState = {world: 'click me!'};
 /*
 const helloWorld = (state = initialState, action) => {
   switch (action.type) {
@@ -34,7 +34,7 @@ const helloWorldReducer = (state = initialState, action) => {
 */
 
 
-//const reducer = combineReducers(rootReducer);
+// const reducer = combineReducers(rootReducer);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -42,9 +42,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,
   composeEnhancers(
     applyMiddleware(
-        epicMiddleware
-      )
-  )
+        epicMiddleware,
+      ),
+  ),
   );
 
 export default store;
