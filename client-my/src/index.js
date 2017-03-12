@@ -13,6 +13,7 @@ import Login from './pages/login';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
+import {requireAuth} from './util';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -21,7 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} />
+        <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="home" component={Home} />
         <Route path="login" component={Login} />
         <Route path="*" component={NotFound} />
