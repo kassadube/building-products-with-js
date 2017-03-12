@@ -13,7 +13,7 @@ import Register from './pages/register';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
-import {requireAuth} from './util';
+import {history, requireAuth} from './util';
 
 
 
