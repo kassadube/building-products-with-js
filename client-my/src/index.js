@@ -1,9 +1,8 @@
 // npm packages
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute} from 'react-router';
 import {Provider} from 'react-redux';
-import {syncHistoryWithStore} from 'react-router-redux';
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +15,6 @@ import App from './app';
 import store from './store';
 import {requireAuth} from './util';
 
-const history = syncHistoryWithStore(browserHistory, store);
 
 
 ReactDOM.render(
