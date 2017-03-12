@@ -12,6 +12,10 @@ export default(app) => {
     // login method
   app.post('/api/register', asyncRequest(async(req, res) => {
     const {login, password, passwordRepeat} = req.body;
+    if (!password) {
+      res.status(400).send({error: 'Password does not exist'});
+      return;
+    }
     if (password !== passwordRepeat) {
       res.status(400).send({error: 'Passwords do not match'});
       return;
