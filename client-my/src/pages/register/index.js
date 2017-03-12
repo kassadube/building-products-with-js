@@ -8,6 +8,7 @@ import {registerAction} from '../../store/actions';
 
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
+  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
+const Register = ({onRegisterClick, navToLogin, redirectToLogin, error}) => {
   let usernameInput;
   let passwordInput;
   let passwordRepeatInput;
@@ -36,6 +37,8 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
     <div className="jumbotron">
       <h3>Login Page</h3>
       <p>please Register Or <Link to="/login" >Login </Link></p>
+      {error ? (<div className="alert alert-danger" role="alert">gggg</div>)
+      : ''}
       <form>
         <div className="form-group">
           <label htmlFor="usernameInput">Username</label>

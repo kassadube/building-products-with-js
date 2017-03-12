@@ -4,10 +4,12 @@ import {Link} from 'react-router';
 import {push} from 'react-router-redux';
 
 import {loginAction} from '../../store/actions';
+import {loginErrorToMessage} from '../../util';
 
 
 const mapStateToProps = state => ({
   token: state.auth.token,
+  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
 });
 
-const Login = ({onLoginClick, token, navToHome}) => {
+const Login = ({onLoginClick, token, navToHome, error}) => {
   let usernameInput;
   let passwordInput;
   let rememberMeInput;
@@ -35,6 +37,8 @@ const Login = ({onLoginClick, token, navToHome}) => {
     <div className="jumbotron">
       <h3>Login Page</h3>
       <p>please log in Or <Link to="/register" >register </Link> </p>
+      {error ? (<div className="alert alert-danger" role="alert">{loginErrorToMessage(error)}</div>)
+      : ''}
       <form>
         <div className="form-group">
           <label htmlFor="usernameInput">Username</label>

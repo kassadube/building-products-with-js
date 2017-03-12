@@ -1,4 +1,4 @@
-import * as ActionTypes from '../actionTypes'
+import * as ActionTypes from '../actionTypes';
 
 const initialState = {world: 'click me!'};
 
@@ -8,7 +8,7 @@ export const helloWorld = (state = initialState, action) => {
       return {...state,
         world: 'loading...',
       };
-      case ActionTypes.HELLO_WORLD_END:
+    case ActionTypes.HELLO_WORLD_END:
       return {...state,
         world: action.payload.world,
       };
