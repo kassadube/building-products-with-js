@@ -6,6 +6,7 @@ import {auth as authConfig} from '../../config';
 export default(app) => {
     // login method
   app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    console.log(req.user);
     if (req.user) {
       const token = jwt.sign(req.user, authConfig.jwtSecret);
       res.send({user: req.user, token});

@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import morgan from 'morgan';
+import cors from 'cors';
 
 // our packages
 import {auth as authConfig} from '../config';
@@ -16,6 +17,8 @@ import {logger} from './util';
 // init app
 const app = express();
 
+// use cors form cross domain requests
+app.use(cors());
 // setup logging
 app.use(morgan('combined', {stream: logger.stream}));
 

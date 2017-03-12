@@ -1,2 +1,6 @@
+// HELLO WORLD ACTIONS
 export const HELLO_WORLD = 'HELLO_WORLD';
 export const HELLO_WORLD_END = 'HELLO_WORLD_END';
+
+// LOGIN ACTIONS
+export const DO_LOGIN = 'DO_LOGIN';

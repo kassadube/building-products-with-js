@@ -1,13 +1,13 @@
-import * as ActionTypes from '../actionTypes'
+import * as ActionTypes from '../actionTypes';
 
 const initialState = {
-  token: ''
+  token: null,
 };
 
 export const auth = (state = initialState, action) => {
   switch (action.type) {
-    
+
     default:
-      return state;
+      return state;// {...state, ...action.payload};
   }
 };

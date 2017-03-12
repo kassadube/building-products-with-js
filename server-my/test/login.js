@@ -48,5 +48,15 @@ export default (test) => {
       t.end();
     });
   });
+  test('CLIENT failed return 400 test', (t) => {
+    request(app)
+    .post('/api/login')
+    .send({ username: 'test1', password: '123', rememberMe: true})
+    .expect(400)
+    .end((err) => {
+      t.error(err, 'No error');
+      t.end();
+    });
+  });
 };
 

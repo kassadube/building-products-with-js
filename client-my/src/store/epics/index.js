@@ -1,2 +1,4 @@
 import {helloWorld} from './helloWorld';
-export default [helloWorld];
+import {auth} from './auth';
+
+export default [auth, helloWorld];
