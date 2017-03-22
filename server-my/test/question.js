@@ -40,4 +40,20 @@ export default (test) => {
         t.end();
       });
   });
+  test('GET /api/question/ - get 10 questions orderby dcreation date', (t) => {
+    request(app)
+      .get('/api/question/')
+      .set('x-access-token', app.get('token'))
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = sendData;// app.get('user');
+        const actualBody = res.body[0];
+
+        t.error(err, 'No Error');
+        t.equal(actualBody.text, expectedBody.text, 'retrieve same question text');
+        t.equal(moment(actualBody.expirationDate).isSame(expectedBody.expirationDate), true, 'retrieve same question date');
+        t.end();
+      });
+  });
 };
