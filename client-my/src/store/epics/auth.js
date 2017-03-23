@@ -6,7 +6,8 @@ import 'rxjs';
 // our packages
 import * as ActionTypes from '../actionTypes';
 
-const server =  'localhost:8090';// '207.232.46.92:8090';//;
+
+const server = 'localhost:8090';// '207.232.46.92:8090';//;
 // LOGIN EPIC ACTION
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
