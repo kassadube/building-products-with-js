@@ -13,4 +13,13 @@ export default (app) => {
       res.status(400).send({error: e.toString()});
     }
   }));
+
+  app.get('/api/question/', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
+    try {
+      const questions = await Question.orderBy('creationDate').limit(10);
+      res.send(questions);
+    } catch (e) {
+      res.status(400).send({error: e.toString()});
+    }
+  }));
 };

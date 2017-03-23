@@ -11,3 +11,8 @@ export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
 });
+
+export const getAllQuestionsAction = () => ({
+  type: ActionTypes.GET_ALL_QUESTIONS,
+});
+
