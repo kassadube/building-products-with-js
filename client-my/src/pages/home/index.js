@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchQuestions: () => dispatch(getAllQuestionsAction()),
+  fetchQuestions: () => _.once(() => dispatch(getAllQuestionsAction())),
   onClick: () => dispatch(helloWorldAction()),
 
 });
