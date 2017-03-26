@@ -20,6 +20,7 @@
     "react/jsx-filename-extension": "off",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "jsx-a11y/anchor-has-content": ["error"],
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "windows"],
+    "react/forbid-prop-types": 0,
   }
 }
