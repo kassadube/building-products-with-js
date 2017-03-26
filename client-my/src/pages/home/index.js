@@ -7,7 +7,7 @@ import Question from '../../components/question';
 
 const mapStateToProps = state => ({
   world: state.helloWorld.world,
-  questions: state.questions.questions
+  questions: state.questions.questions,
 });
 
 const mapDispatchToProps = dispatch => ({
