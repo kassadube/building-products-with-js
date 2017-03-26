@@ -30,19 +30,19 @@ export const getAllQuestions = action$ => action$
   );
 
 
-export const answerQuestions = action$ => action$
-  .ofType(ActionTypes.GET_ALL_QUESTIONS)
+export const answerQuestion = action$ => action$
+  .ofType(ActionTypes.ANSWER_QUESTION)
    .map(signRequest)
-  .switchMap(({headers}) => Observable
-  .ajax.get(`http://${server}/api/question`, headers)
+  .switchMap(({headers, payload}) => Observable
+  .ajax.post(`http://${server}/api/question/${payload.id}/answer`, headers, payload)
   .map(res => res.response)
-  .map(questions => ({
-    type: ActionTypes.GET_ALL_QUESTIONS_SUCCESS,
-    payload: {questions},
+  .map(question => ({
+    type: ActionTypes.ANSWER_QUESTION_SUCCESS,
+    payload: {question},
   }))
   .catch(err =>
     Observable.of({
-      type: ActionTypes.GET_ALL_QUESTIONS_ERROR,
+      type: ActionTypes.ANSWER_QUESTION_ERROR,
       payload: {
         error: err,
       },
