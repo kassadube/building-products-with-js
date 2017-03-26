@@ -2,24 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
-import {helloWorldAction, getAllQuestionsAction} from '../../store/actions';
+import {getAllQuestionsAction} from '../../store/actions';
 import Question from '../../components/question';
 
 const mapStateToProps = state => ({
-  world: state.helloWorld.world,
+  // world: state.helloWorld.world,
   questions: state.questions.questions,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchQuestions: () => _.once(() =>{ dispatch(getAllQuestionsAction());}),
-  //fetchQuestions: () => dispatch(getAllQuestionsAction()),
-  onClick: () => dispatch(helloWorldAction()),
-
+  fetchQuestions: _.once(() => dispatch(getAllQuestionsAction())),
 });
 
-const Home = ({onClick, fetchQuestions, world, questions}) => {
-  console.log('hhhh');
-  console.dir(getAllQuestionsAction);
+const Home = ({fetchQuestions, questions}) => {
   fetchQuestions();
   return (
     <div>
@@ -37,20 +32,17 @@ const Home = ({onClick, fetchQuestions, world, questions}) => {
       </nav>
       <Question />
       {JSON.stringify(questions)}
+      <button type="button" className="btn btn-default" onClick={() => fetchQuestions()}>Click me</button>
     </div>
   );
 };
 
 Home.propTypes = {
   questions: React.PropTypes.array,
-  world: React.PropTypes.string,
-  onClick: React.PropTypes.func,
   fetchQuestions: React.PropTypes.func,
 };
 Home.defaultProps = {
   questions: [],
-  world: '',
-  onClick: e => e,
   fetchQuestions: e => e,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
