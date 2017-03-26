@@ -2,7 +2,6 @@
 import React from 'react';
 
 
-
 const style = {
   footer: {
     position: 'absolute',

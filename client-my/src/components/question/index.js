@@ -1,11 +1,19 @@
 // npm packages
 import React from 'react';
 
-export default () => (
-  <div className="panel panel-default">
-    <div className="panel-heading">Panel heading without title</div>
-    <div className="panel-body">
+export default function Question({question}) {
+  return (
+    <div className="panel panel-default">
+      <div className="panel-heading">{question.text}</div>
+      <div className="panel-body">
         Panel content
     </div>
-  </div>
-);
+    </div>
+  );
+}
+Question.propTypes = {
+  question: React.PropTypes.object,
+};
+Question.defaultProps = {
+  question: {},
+};

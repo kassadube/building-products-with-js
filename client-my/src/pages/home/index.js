@@ -30,9 +30,9 @@ const Home = ({fetchQuestions, questions}) => {
           </ul>
         </div>
       </nav>
-      <Question />
-      {JSON.stringify(questions)}
-      <button type="button" className="btn btn-default" onClick={() => fetchQuestions()}>Click me</button>
+      <div>
+        {questions.map(question => (<Question key={question.id} question={question} />))}
+      </div>
     </div>
   );
 };
