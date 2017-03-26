@@ -16,3 +16,8 @@ export const getAllQuestionsAction = () => ({
   type: ActionTypes.GET_ALL_QUESTIONS,
 });
 
+export const answerQuestionAction = payload => ({
+  type: ActionTypes.ANSWER_QUESTION,
+  payload,
+});
+

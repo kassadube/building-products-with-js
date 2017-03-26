@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
-import {getAllQuestionsAction} from '../../store/actions';
+import {getAllQuestionsAction, answerQuestionAction} from '../../store/actions';
 import Question from '../../components/question';
 
 const mapStateToProps = state => ({

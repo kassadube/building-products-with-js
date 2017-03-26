@@ -56,4 +56,23 @@ export default (test) => {
         t.end();
       });
   });
+  test('POST /api/question/:id/answer - add answer to question', (t) => {
+    console.log(app.get('question').id);
+    request(app)
+      .post(`/api/question/${app.get('question').id}/answer`)
+      .set('x-access-token', app.get('token'))
+      .send({answer: 'test answer'})
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = sendData;// app.get('user');
+        const actualBody = res.body;
+
+        t.error(err, 'No Error');
+        t.equal(actualBody.answers.length, 1, 'retrieve same amount of answers 1');
+        t.equal(actualBody.text, expectedBody.text, 'retrieve same question text');
+        t.equal(moment(actualBody.expirationDate).isSame(expectedBody.expirationDate), true, 'retrieve same question date');
+        t.end();
+      });
+  });
 };
