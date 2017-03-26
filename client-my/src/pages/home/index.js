@@ -11,12 +11,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchQuestions: () => dispatch(getAllQuestionsAction()),
+  fetchQuestions: () => _.once(() =>{ dispatch(getAllQuestionsAction());}),
+  //fetchQuestions: () => dispatch(getAllQuestionsAction()),
   onClick: () => dispatch(helloWorldAction()),
 
 });
 
 const Home = ({onClick, fetchQuestions, world, questions}) => {
+  console.log('hhhh');
+  console.dir(getAllQuestionsAction);
   fetchQuestions();
   return (
     <div>
