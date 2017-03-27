@@ -5,7 +5,7 @@ export default function Question({question, onAnswer}) {
   let answerInput;
   const handleClick = (e) => {
     e.preventDefault();
-    onAnswer({question,answer:{answer: answerInput.value}});
+    onAnswer({question, answer: {answer: answerInput.value}});
     return false;
   };
 
@@ -13,7 +13,13 @@ export default function Question({question, onAnswer}) {
     <div className="panel panel-default">
       <div className="panel-heading">{question.text}</div>
       <div className="panel-body">
-        {question.answers.length > 0 ? <span /> : <span>No answers yet</span>}
+        {question.answers.length > 0 ?
+           (
+             <ul className="list-group">
+               {question.answers.map((a, i) => <li className="list-group-item" key={i}>{a.answer}</li>)}
+             </ul>
+            )
+           : <span>No answers yet</span>}
       </div>
       <div className="panel-footer">
         <form className="form-horizontal">
