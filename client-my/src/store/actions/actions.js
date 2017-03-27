@@ -20,4 +20,8 @@ export const answerQuestionAction = payload => ({
   type: ActionTypes.ANSWER_QUESTION,
   payload,
 });
+export const addQuestionAction = payload => ({
+  type: ActionTypes.ADD_QUESTION,
+  payload,
+});
 

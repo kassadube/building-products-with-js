@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
+import Create from './pages/Create';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
@@ -25,6 +26,7 @@ ReactDOM.render(
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="home" component={Home} />
         <Route path="login" component={Login} />
+        <Route path="create" component={Create} />
         <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>

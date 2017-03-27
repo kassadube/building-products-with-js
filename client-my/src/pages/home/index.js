@@ -26,7 +26,7 @@ const Home = ({fetchQuestions, questions, addAnswer}) => {
           </div>
           <ul className="nav navbar-nav">
             <li><Link to="/other">page Not Found</Link></li>
-            <li><Link to="/">Browse questions</Link></li>
+            <li className="active"><Link to="/">Browse questions</Link></li>
             <li><Link to="/create">Create new questions</Link></li>
           </ul>
         </div>

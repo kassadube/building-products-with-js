@@ -49,3 +49,23 @@ export const answerQuestion = action$ => action$
     }),
   ),
   );
+
+export const addQuestion = action$ => action$
+  .ofType(ActionTypes.ADD_QUESTION)
+   .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+  .ajax.post(`http://${server}/api/question`, payload, headers)
+  .map(res => res.response)
+  .map(question => ({
+    type: ActionTypes.ADD_QUESTION_SUCCESS,
+    payload: {question},
+  }))
+  .catch(err =>
+    Observable.of({
+      type: ActionTypes.ADD_QUESTION_ERROR,
+      payload: {
+        error: err,
+      },
+    }),
+  ),
+  );
