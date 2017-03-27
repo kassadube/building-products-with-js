@@ -1,4 +1,7 @@
+import _ from 'lodash';
+
 import * as ActionTypes from '../actionTypes';
+
 
 const initialState = {questions: [], status: 'inited'};
 
@@ -44,8 +47,11 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ADD_QUESTION_SUCCESS:
+      const questionsClone = _.clone(state.questions);
+      questionsClone.push(action.payload);      
       return {
         ...state,
+        questions: questionsClone,
         status: 'done',
       };
     case ActionTypes.ADD_QUESTION_ERROR:
