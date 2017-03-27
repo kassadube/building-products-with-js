@@ -26,6 +26,9 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ANSWER_QUESTION_SUCCESS:
+      const updatedQuetion = action.payload.question;
+      const index = state.questions.findIndex(q => q.id === updatedQuetion.id);
+      state.questions[index] = updatedQuetion;
       return {
         ...state,
         status: 'done',

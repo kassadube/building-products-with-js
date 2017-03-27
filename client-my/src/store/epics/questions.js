@@ -34,7 +34,7 @@ export const answerQuestion = action$ => action$
   .ofType(ActionTypes.ANSWER_QUESTION)
    .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-  .ajax.post(`http://${server}/api/question/${payload.id}/answer`, headers, payload)
+  .ajax.post(`http://${server}/api/question/${payload.question.id}/answer`, payload.answer, headers)
   .map(res => res.response)
   .map(question => ({
     type: ActionTypes.ANSWER_QUESTION_SUCCESS,

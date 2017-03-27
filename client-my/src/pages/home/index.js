@@ -12,9 +12,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchQuestions: _.once(() => dispatch(getAllQuestionsAction())),
+  addAnswer: (payload) => { dispatch(answerQuestionAction(payload)); },
 });
 
-const Home = ({fetchQuestions, questions}) => {
+const Home = ({fetchQuestions, questions, addAnswer}) => {
   fetchQuestions();
   return (
     <div>
@@ -31,7 +32,7 @@ const Home = ({fetchQuestions, questions}) => {
         </div>
       </nav>
       <div>
-        {questions.map(question => (<Question key={question.id} question={question} />))}
+        {questions.map(question => (<Question key={question.id} question={question} onAnswer={addAnswer} />))}
       </div>
     </div>
   );
@@ -40,9 +41,11 @@ const Home = ({fetchQuestions, questions}) => {
 Home.propTypes = {
   questions: React.PropTypes.array,
   fetchQuestions: React.PropTypes.func,
+  addAnswer: React.PropTypes.func,
 };
 Home.defaultProps = {
   questions: [],
   fetchQuestions: e => e,
+  addAnswer: e => e,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

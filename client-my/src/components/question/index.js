@@ -5,7 +5,7 @@ export default function Question({question, onAnswer}) {
   let answerInput;
   const handleClick = (e) => {
     e.preventDefault();
-    onAnswer(answerInput.value);
+    onAnswer({question,answer:{answer: answerInput.value}});
     return false;
   };
 
