@@ -9,7 +9,7 @@ export const questions = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.GET_ALL_QUESTIONS:
       return {
-        questions: [],
+        ...state,
         status: 'loading...',
       };
     case ActionTypes.GET_ALL_QUESTIONS_SUCCESS:
@@ -29,8 +29,8 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ANSWER_QUESTION_SUCCESS:
-      const index = state.questions.findIndex(q => q.id === action.payload.question.id);
-      state.questions[index] = action.payload.question;
+      // const index = state.questions.findIndex(q => q.id === action.payload.question.id);
+      // state.questions[index] = action.payload.question;
       return {
         ...state,
         status: 'done',
@@ -47,11 +47,11 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ADD_QUESTION_SUCCESS:
-      const questionsClone = _.clone(state.questions);
-      questionsClone.push(action.payload);      
+      //const questionsClone = _.clone(state.questions);
+     // questionsClone.push(action.payload);      
       return {
         ...state,
-        questions: questionsClone,
+       //questions: questionsClone,
         status: 'done',
       };
     case ActionTypes.ADD_QUESTION_ERROR:
