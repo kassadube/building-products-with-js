@@ -27,7 +27,7 @@ gulp.task("server", PRODUCTION ? () => server(PRODUCTION) : function () {
     // only start browserSync when this is development
     browserSync.init({
         proxy: "localhost:3003",
-        open: false,
+        open: true,
         ghostMode: {
             clicks: true,
             forms: true,
@@ -39,9 +39,10 @@ gulp.task("server", PRODUCTION ? () => server(PRODUCTION) : function () {
 
 
 gulp.task("browserify", function () {
+    console.log('prrrr', PRODUCTION);
     const ops = {
         debug: !PRODUCTION,
-        entries: "js/index.jsx",
+        entries: "js/index.js",
         extensions: [".js", ".jsx"],
         basedir: "./src",
         transform: [babelify]
@@ -97,13 +98,13 @@ gulp.task("copy-index", function () {
 // Watch tasks
 gulp.task("watch", ["build"], PRODUCTION ? () => { } : function () {
     gulp.watch(["./src/index.html"], ["copy-index"]);
-    gulp.watch(["./src/css/**/*.css"], ["copy-css"]);
-    gulp.watch(["./src/img/**/*"], ["copy-img"]);
-    gulp.watch(["./src/js/**/*.js?(x)"], ["browserify"]);
+    //gulp.watch(["./src/css/**/*.css"], ["copy-css"]);
+    //gulp.watch(["./src/img/**/*"], ["copy-img"]);
+    gulp.watch(["./src/js/**/*.js"], ["browserify"]);
 });
 
 // Build tasks
-gulp.task("build", ["copy-img", "copy-index", "browserify"]);
+gulp.task("build", [ "browserify"]);
 
 
 // Default

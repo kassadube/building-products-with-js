@@ -4,7 +4,7 @@
   "description": "Experts portal client",
   "main": "index.js",
   "scripts": {
-    "start": "node serve.js",
+    "start": "gulp",
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage"
@@ -48,7 +48,10 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
     "css-loader": "^0.26.1",
+    "del": "^2.2.2",
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.4.5",
     "eslint": "^3.10.2",
