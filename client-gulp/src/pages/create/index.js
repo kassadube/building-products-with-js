@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 // import _ from 'lodash';
 import moment from 'moment';
 import {addQuestionAction} from '../../store/actions';
+import Navbar from '../../components/navbar';
 
 const mapStateToProps = state => ({
+  user: state.auth.user,
   // world: state.helloWorld.world,
   // questions: state.questions.questions,
 });
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 //  addAnswer: (payload) => { dispatch(answerQuestionAction(payload)); },
 });
 
-const Create = ({doAddQuestion}) => {
+const Create = ({doAddQuestion, user}) => {
   let questionTextInput;
   let expirationDateInput;
 
@@ -31,18 +32,7 @@ const Create = ({doAddQuestion}) => {
 
   return (
     <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-          <ul className="nav navbar-nav">
-            <li><Link to="/other">page Not Found</Link></li>
-            <li ><Link to="/">Browse questions</Link></li>
-            <li className="active"><Link to="/create">Create new questions</Link></li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar user={user} />
       <div >
         <form className="form">
           <div className="form-group">
@@ -75,12 +65,14 @@ const Create = ({doAddQuestion}) => {
 
 Create.propTypes = {
   doAddQuestion: PropTypes.func,
+  user: PropTypes.object,
  // questions: React.PropTypes.array,
 //  fetchQuestions: React.PropTypes.func,
 //  addAnswer: React.PropTypes.func,
 };
 Create.defaultProps = {
   doAddQuestion: e => e,
+  user: {},
 //  questions: [],
  // fetchQuestions: e => e,
 //  addAnswer: e => e,

@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import {getAllQuestionsAction, answerQuestionAction} from '../../store/actions';
 import Question from '../../components/question';
+import Navbar from '../../components/navbar';
 
 
 const mapStateToProps = state => ({
-  // world: state.helloWorld.world,
   questions: state.questions.questions,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,22 +18,11 @@ const mapDispatchToProps = dispatch => ({
   addAnswer: (payload) => { dispatch(answerQuestionAction(payload)); },
 });
 
-const Home = ({fetchQuestions, questions, addAnswer}) => {
+const Home = ({fetchQuestions, questions, addAnswer, user}) => {
   fetchQuestions();
   return (
     <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-          <ul className="nav navbar-nav">
-            <li><Link to="/other">page Not Found</Link></li>
-            <li className="active"><Link to="/">Browse questions</Link></li>
-            <li><Link to="/create">Create new questions</Link></li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar user={user} />
       <div>
         {questions.map(question => (<Question key={question.id} question={question} onAnswer={addAnswer} />))}
       </div>
@@ -44,10 +34,12 @@ Home.propTypes = {
   questions: PropTypes.array,
   fetchQuestions: PropTypes.func,
   addAnswer: PropTypes.func,
+  user: PropTypes.object,
 };
 Home.defaultProps = {
   questions: [],
   fetchQuestions: e => e,
   addAnswer: e => e,
+  user: {},
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

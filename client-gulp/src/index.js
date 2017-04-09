@@ -14,6 +14,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
 import Create from './pages/Create';
+import Profile from './pages/Profile';
 import NotFound from './pages/notFound';
 import App from './app';
 import store from './store';
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Route path="login" component={Login} />
         <Route path="create" component={Create} onEnter={requireAuth} />
         <Route path="register" component={Register} />
+        <Route path="profile/:id" component={Profile} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
