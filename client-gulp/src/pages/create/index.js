@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import _ from 'lodash';
+import PropTypes from 'prop-types';
+// import _ from 'lodash';
 import moment from 'moment';
 import {addQuestionAction} from '../../store/actions';
 
@@ -73,11 +74,13 @@ const Create = ({doAddQuestion}) => {
 };
 
 Create.propTypes = {
+  doAddQuestion: PropTypes.func,
  // questions: React.PropTypes.array,
 //  fetchQuestions: React.PropTypes.func,
 //  addAnswer: React.PropTypes.func,
 };
 Create.defaultProps = {
+  doAddQuestion: e => e,
 //  questions: [],
  // fetchQuestions: e => e,
 //  addAnswer: e => e,

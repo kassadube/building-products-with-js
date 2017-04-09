@@ -4,5 +4,6 @@ server/lib/
 npm-debug.log
 npm-debug.log.*
 client/dist/
+dist/
 coverage
 daemon/

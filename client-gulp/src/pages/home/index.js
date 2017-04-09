@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import {getAllQuestionsAction, answerQuestionAction} from '../../store/actions';
 import Question from '../../components/question';
+
 
 const mapStateToProps = state => ({
   // world: state.helloWorld.world,
@@ -39,9 +41,9 @@ const Home = ({fetchQuestions, questions, addAnswer}) => {
 };
 
 Home.propTypes = {
-  questions: React.PropTypes.array,
-  fetchQuestions: React.PropTypes.func,
-  addAnswer: React.PropTypes.func,
+  questions: PropTypes.array,
+  fetchQuestions: PropTypes.func,
+  addAnswer: PropTypes.func,
 };
 Home.defaultProps = {
   questions: [],
