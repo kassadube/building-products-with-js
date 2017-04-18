@@ -1,5 +1,6 @@
 // npm packages
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Question({question, onAnswer}) {
   let answerInput;
@@ -39,8 +40,8 @@ export default function Question({question, onAnswer}) {
   );
 }
 Question.propTypes = {
-  question: React.PropTypes.object,
-  onAnswer: React.PropTypes.func,
+  question: PropTypes.object,
+  onAnswer: PropTypes.func,
 };
 Question.defaultProps = {
   question: {},

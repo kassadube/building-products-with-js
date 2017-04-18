@@ -29,12 +29,9 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ANSWER_QUESTION_SUCCESS:
-      // const index = state.questions.findIndex(q => q.id === action.payload.question.id);
+      const newQuestions = state.questions.map(q => q.id === action.payload.question.id ? action.payload.question : q);
       // state.questions[index] = action.payload.question;
-      return {
-        ...state,
-        status: 'done',
-      };
+      return Object.assign({}, state, {questions: newQuestions});
     case ActionTypes.ANSWER_QUESTION_ERROR:
       return {
         ...state,
@@ -47,11 +44,11 @@ export const questions = (state = initialState, action) => {
         status: 'getting...',
       };
     case ActionTypes.ADD_QUESTION_SUCCESS:
-      //const questionsClone = _.clone(state.questions);
-     // questionsClone.push(action.payload);      
+      // const questionsClone = _.clone(state.questions);
+     // questionsClone.push(action.payload);
       return {
         ...state,
-       //questions: questionsClone,
+       // questions: questionsClone,
         status: 'done',
       };
     case ActionTypes.ADD_QUESTION_ERROR:
