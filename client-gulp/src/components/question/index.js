@@ -1,5 +1,6 @@
 // npm packages
 import React from 'react';
+import{Link} from 'react-router';
 import PropTypes from 'prop-types';
 
 export default function Question({question, onAnswer}) {
@@ -12,7 +13,10 @@ export default function Question({question, onAnswer}) {
 
   return (
     <div className="panel panel-default">
-      <div className="panel-heading">{question.text}</div>
+      <div className="panel-heading">
+      {question.text}
+        <div className="pull-right"><Link to={`profile/${question.owner.id}`} >{question.owner.login} </Link> </div>
+        </div>
       <div className="panel-body">
         {question.answers.length > 0 ?
            (
