@@ -28,7 +28,12 @@ export const addQuestionAction = payload => ({
 
 // users actions
 
-export const getUser = payload => ({
+export const getUserAction = payload => ({
   type: ActionTypes.GET_USER,
+  payload,
+});
+
+export const updateUserAction = payload => ({
+  type: ActionTypes.UPDATE_USER,
   payload,
 });

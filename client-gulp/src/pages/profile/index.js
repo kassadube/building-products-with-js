@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Navbar from '../../components/navbar';
 import User from '../../components/user';
-import {getUser} from '../../store/actions';
+import {getUserAction} from '../../store/actions';
 
 
 const mapStateToProps = state => ({
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUser: (payload) => { dispatch(getUser(payload)); },
+  getUser: (payload) => { dispatch(getUserAction(payload)); },
 });
 
 class Profile extends React.Component {
@@ -27,12 +27,13 @@ class Profile extends React.Component {
   }
   render() {
     const {user, params, loadedUser} = this.props;
+    const allowEdit = loadedUser && user.id === loadedUser.id;
     return (<div>
       <Navbar user={user} />
       <div>
            Profile: {params.id}
       </div>
-      <User user={loadedUser} />
+      <User user={loadedUser} edit={allowEdit} />
       
     </div>);
   }

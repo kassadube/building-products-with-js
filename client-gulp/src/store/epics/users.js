@@ -29,3 +29,23 @@ export const getUser = action$ => action$
   ),
   );
 
+export const updateUser = action$ => action$
+  .ofType(ActionTypes.UPDATE_USER)
+   .map(signRequest)
+  .switchMap(({payload, headers}) => Observable
+  .ajax.post(`http://${server}/api/user/${payload.id}`, payload, headers)
+  .map(res => res.response)
+  .map(user => ({
+    type: ActionTypes.UPDATE_USER_SUCCESS,
+    payload: {user},
+  }))
+  .catch(err =>
+    Observable.of({
+      type: ActionTypes.UPDATE_USER_ERROR,
+      payload: {
+        error: err,
+      },
+    }),
+  ),
+  );
+

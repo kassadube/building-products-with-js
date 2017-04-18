@@ -15,7 +15,18 @@ export const users = (state = initialState, action) => {
         user: action.payload.user,
         status: 'done',
       };
-    case ActionTypes.GET_ALL_USER_ERROR:
+    case ActionTypes.UPDATE_USER:
+      return {
+        ...state,
+        status: 'loading...',
+      };
+    case ActionTypes.UPDATE_USER_SUCCESS:
+      return {
+        user: action.payload.user,
+        status: 'done',
+      };
+    case ActionTypes.GET_USER_ERROR:
+    case ActionTypes.UPDATE_USER_ERROR:
       return {
         ...state,
         status: 'error',
