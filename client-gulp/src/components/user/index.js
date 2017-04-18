@@ -3,14 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function User({user}) {
-   return user?
+  return user ?
    (
-    <div className="panel panel-default" key={user.id}>
-      <div className="panel-heading">{user.login}</div>
-      <div className="panel-body">
+     <div className="panel panel-default" key={user.id}>
+       <div className="panel-heading">{user.login}</div>
+       <div className="panel-body">
           Registration Date {user.registrationDate}
-      </div>
-    </div>
+       </div>
+     </div>
   ) : null;
 }
 User.propTypes = {
