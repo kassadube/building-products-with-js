@@ -27,13 +27,13 @@ export default (app) => {
     const loginChanged = login && user.login !== login;
     const passwordChanged = password && user.password !== hash(password);
     if (!loginChanged && !passwordChanged) {
-        delete user.password;
+      delete user.password;
       res.send(user);
       return;
     }
     // check password match
     if (passwordChanged && password !== passwordRepeat) {
-      res.status(400).send({error: 'Passpords not match'});
+      res.status(400).send({error: 'Passwords not match'});
     }
     // check in new login is login Taken
     if (loginChanged) {
