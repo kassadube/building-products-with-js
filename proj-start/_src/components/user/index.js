@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 // npm packages
 import React from 'react';
 import PropTypes from 'prop-types';

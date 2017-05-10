@@ -6,7 +6,7 @@ import config from '../webpack.config.analize.prod';
 import {chalkError, chalkSuccess, chalkWarning, chalkProcessing} from './chalkConfig';
 
 // this assures React is built in prod mode and that the Babel dev config doesn't apply.
-process.env.NODE_ENV = 'production'; 
+process.env.NODE_ENV = 'production';
 console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
 webpack(config).run((error, stats) => {

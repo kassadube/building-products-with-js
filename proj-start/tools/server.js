@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import { chalkSuccess,  chalkProcessing} from './chalkConfig';
+import {chalkSuccess, chalkProcessing} from './chalkConfig';
 
 const path = require('path');
 const express = require('express');

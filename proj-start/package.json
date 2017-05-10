@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node ./tools/server",
     "open:dist": "babel-node tools/distServer.js",
-    "clean-dist": "npm run remove-dist && mkdir dist",
+    "clean": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
     "build:prod": "babel-node tools/build.js",

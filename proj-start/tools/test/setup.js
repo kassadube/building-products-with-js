@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 // import enzyme methods
 import React from 'react';
 import {shallow, render, mount} from 'enzyme';

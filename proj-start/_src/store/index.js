@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }] */
 import {createStore, applyMiddleware, compose} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
 import {browserHistory} from 'react-router';
