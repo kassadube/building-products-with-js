@@ -28,10 +28,6 @@ export const questions = (state = initialState, action) => {
         ...state,
         status: 'getting...',
       };
-    case ActionTypes.ANSWER_QUESTION_SUCCESS:
-      const newQuestions = state.questions.map(q => q.id === action.payload.question.id ? action.payload.question : q);
-      // state.questions[index] = action.payload.question;
-      return Object.assign({}, state, {questions: newQuestions});
     case ActionTypes.ANSWER_QUESTION_ERROR:
       return {
         ...state,

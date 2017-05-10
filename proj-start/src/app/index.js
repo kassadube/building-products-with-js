@@ -14,8 +14,8 @@ export default function app({children}) {
 }
 
 app.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 app.defaultProps = {
-  children: [],
+  children: {},
 };

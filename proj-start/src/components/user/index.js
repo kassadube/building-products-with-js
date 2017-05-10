@@ -7,11 +7,11 @@ import {connect} from 'react-redux';
 
 import {updateUserAction} from '../../store/actions';
 
-
+/*
 const mapStateToProps = state => ({
 
 });
-
+*/
 const mapDispatchToProps = dispatch => ({
   updateUser: (payload) => { dispatch(updateUserAction(payload)); },
 });
@@ -53,4 +53,5 @@ User.defaultProps = {
   updateUser: e => e,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+// export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect({}, mapDispatchToProps)(User);
