@@ -7,5 +7,5 @@ test('Wrong password', () => {
   // Render a checkbox with label in the document
   
 
-  expect(loginErrorToMessage({status: 401})).toEqual('Wrong login or password, please try again!');
+  expect(loginErrorToMessage({status: 401})).toBe('Wrong login or password, please try again!');
 });
