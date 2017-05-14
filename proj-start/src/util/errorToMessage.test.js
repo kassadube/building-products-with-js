@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* global test, expect */
 
-import {loginErrorToMessage} from '../errorToMessage';
+import {loginErrorToMessage} from './errorToMessage';
 
 test('Wrong password', () => {
   // Render a checkbox with label in the document
