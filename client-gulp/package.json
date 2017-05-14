@@ -36,7 +36,9 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
-    }
+    },
+    "bail": true,
+    "notify": true
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

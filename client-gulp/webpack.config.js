@@ -34,7 +34,17 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
-        presets: ['react', 'es2015', 'stage-0', 'react-hmre'],
+        cacheDirectory: true,
+        presets: ['es2015', 'react', 'stage-0'],
+        plugins: ['transform-runtime'],
+        env: {
+          development: {
+            presets: ['react-hmre'],
+          },
+          production: {
+            presets: ['react-optimize'],
+          },
+        },
       },
     }, {
       test: /\.json?$/,
