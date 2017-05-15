@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
   updateUser: (payload) => { dispatch(updateUserAction(payload)); },
 });
 
-function User({user, edit, updateUser}) {
+export const User = ({user, edit, updateUser}) => {
   if (user == null) return null;
   let userInput;
   let headerContent = '';
@@ -40,7 +40,8 @@ function User({user, edit, updateUser}) {
       </div>
     </div>
   );
-}
+};
+
 User.propTypes = {
   user: PropTypes.object,
   edit: PropTypes.bool,

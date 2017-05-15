@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# User 1`] = `
+<div
+  className="panel panel-default"
+>
+  <div
+    className="panel-heading"
+  >
+    User: 
+    test
+     
+  </div>
+  <div
+    className="panel-body"
+  >
+    Registration Date 
+    2017-05-07T10:22:37.364Z
+  </div>
+</div>
+`;
+
+exports[`# User Warraper 1`] = `
+<User
+  edit={false}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+  updateUser={[Function]}
+  user={
+    Object {
+      "id": "0",
+      "login": "test",
+      "registrationDate": "2017-05-07T10:22:37.364Z",
+    }
+  }
+/>
+`;
