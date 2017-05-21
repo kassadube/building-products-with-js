@@ -10,7 +10,7 @@ git push origin master # push current HEAD to remote master branch
 create new working branch
 --------------------------------------
 
-git checkout -b nameofnewbranch
+git checkout -b nameofnewbranch 
 
 after doing that need to make change
 
