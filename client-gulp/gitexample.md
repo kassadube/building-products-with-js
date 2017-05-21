@@ -10,7 +10,8 @@ git push origin master # push current HEAD to remote master branch
 create new working branch
 --------------------------------------
 
-git checkout -b nameofnewbranch 
+git checkout -b livestream10 
+git push --set-upstream origin livestream10
 
 after doing that need to make change
 
