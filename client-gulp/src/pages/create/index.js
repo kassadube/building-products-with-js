@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 //  addAnswer: (payload) => { dispatch(answerQuestionAction(payload)); },
 });
 
-const Create = ({doAddQuestion, user}) => {
+export const Create = ({doAddQuestion, user}) => {
   let questionTextInput;
   let expirationDateInput;
 
@@ -55,7 +55,7 @@ const Create = ({doAddQuestion, user}) => {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-default" onClick={handleCreate} >Create new question</button>
+            <button type="submit" id="createBTN" className="btn btn-default" onClick={handleCreate} >Create new question</button>
           </div>
         </form>
       </div>
