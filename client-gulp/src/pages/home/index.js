@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   addAnswer: (payload) => { dispatch(answerQuestionAction(payload)); },
 });
 
-const Home = ({fetchQuestions, questions, addAnswer, user}) => {
+export const Home = ({fetchQuestions, questions, addAnswer, user}) => {
   fetchQuestions();
   return (
     <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {push} from 'react-router-redux';
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
 });
 
-const Login = ({onLoginClick, token, navToHome, error}) => {
+export const Login = ({onLoginClick, token, navToHome, error}) => {
   let usernameInput;
   let passwordInput;
   let rememberMeInput;
@@ -76,5 +77,17 @@ const Login = ({onLoginClick, token, navToHome, error}) => {
   );
 };
 
+Login.propTypes = {
+  onLoginClick: PropTypes.func,
+  token: PropTypes.string,
+  navToHome: PropTypes.func,
+  error: PropTypes.string,
+};
+Login.defaultProps = {
+  onLoginClick: e => e,
+  token: '',
+  navToHome: e => e,
+  error: '',
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 

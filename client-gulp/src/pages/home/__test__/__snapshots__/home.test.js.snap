@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Home 1`] = `
+<div>
+  <Component
+    user={Object {}}
+  />
+  <div />
+</div>
+`;
+
+exports[`# Home Warraper 1`] = `
+<Home
+  addAnswer={[Function]}
+  fetchQuestions={[Function]}
+  questions={Array []}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+  user={Object {}}
+/>
+`;
+
+exports[`# Home with Questions 1`] = `
+<div>
+  <Component
+    user={
+      Object {
+        "id": "0",
+        "login": "test",
+        "registrationDate": "2017-05-07T10:22:37.364Z",
+      }
+    }
+  />
+  <div>
+    <Question
+      onAnswer={[Function]}
+      question={
+        Object {
+          "expirationDate": 2016-01-31T23:01:01.001Z,
+          "id": 5,
+          "owner": Object {
+            "id": "0",
+            "login": "test",
+            "registrationDate": "2017-05-07T10:22:37.364Z",
+          },
+          "text": "test",
+        }
+      }
+    />
+  </div>
+</div>
+`;
