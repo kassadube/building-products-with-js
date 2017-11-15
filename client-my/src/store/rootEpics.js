@@ -6,6 +6,4 @@ import 'rxjs';
 // import * as ActionTypes from './actionTypes';
 import epics from './epics';
 
-
-
 export default combineEpics(...epics);
